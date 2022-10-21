@@ -117,8 +117,8 @@ class Grid:
             return fig
 
         if show_entity:
-            fig = go.Figure(data=go.Heatmap(z=self.step_CO2[step], colorscale=[[0., '#2B812B'], [0.25, '#E9E439'],
-                                                                               [0.5, '#E7771A'], [1., '#E52216']],
+            fig = go.Figure(data=go.Heatmap(z=self.step_CO2[step], colorscale=[[0., '#2B812B'], [0.33, '#E9E439'],
+                                                                               [0.66, '#E7771A'], [1., '#E52216']],
                                             text=self.__entity_to_str(step),
                                             texttemplate="%{text}",
                                             textfont={"size": 2}
