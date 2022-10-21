@@ -230,8 +230,6 @@ class Grid:
         for step in range(steps_amount):
             fig.add_trace(
                 self.heatmap_CO2(step=step, get_heatmap=True))
-        # Make 10th trace visible
-        fig.data[0].visible = True
         # Create and add slider
         steps = []
         for i in range(len(fig.data)):
@@ -246,7 +244,7 @@ class Grid:
             )
             step["args"][0]["visible"][i] = True
             steps.append(step)
-
+        fig.data[0].visible = True
         sliders = [dict(
             active=0,
             currentvalue={"prefix": "Step: "},
