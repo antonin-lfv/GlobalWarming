@@ -21,6 +21,14 @@ YELLOW = 1
 ORANGE = 2
 RED = 3
 
+c1, c2, c3 = st.columns((1, 0.1, 1))
+with c1:
+    size = st.slider(label="Size of the matrix", min_value=20, max_value=200, value=50, step=1)
+with c2:
+    proportion_factories = st.slider(label="Proportion of Factories", min_value=0., max_value=1., value=0.04, step=0.01)
+    proportion_cars = st.slider(label="Proportion of Cars", min_value=0., max_value=1., value=0.04, step=0.01)
+    proportion_trees = st.slider(label="Proportion of Trees", min_value=0., max_value=1., value=0.01, step=0.01)
+
 
 class Grid:
     def __init__(self, size=100, proportion_factories=0.04, proportion_cars=0.04, proportion_trees=0.1, tree_power=3):
@@ -252,5 +260,9 @@ class Grid:
         st.plotly_chart(fig, use_container_width=True)
 
 
-g = Grid(size=250)
+g = Grid(size=size,
+         proportion_cars=proportion_cars,
+         proportion_trees=proportion_trees,
+         proportion_factories=proportion_factories)
+
 g.launch_simulation(steps_amount=30)
