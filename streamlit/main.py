@@ -249,7 +249,7 @@ class Grid:
         fig.update_layout(
             sliders=sliders,
         )
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
 
 
 g = Grid(size=250)
