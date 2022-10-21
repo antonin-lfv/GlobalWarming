@@ -246,7 +246,7 @@ class Grid:
             steps.append(step)
         fig.data[0].visible = True
         sliders = [dict(
-            active=0,
+            active=1,
             currentvalue={"prefix": "Step: "},
             pad={"t": len(fig.data)},
             steps=steps
