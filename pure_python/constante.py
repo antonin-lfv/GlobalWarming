@@ -1,0 +1,10 @@
+# entity
+EMPTY = 0
+TREE = 1
+FACTORY = 4
+CAR = 2
+# CO2
+GREEN = 0
+YELLOW = 1
+ORANGE = 2
+RED = 3
