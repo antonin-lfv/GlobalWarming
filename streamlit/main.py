@@ -21,13 +21,11 @@ YELLOW = 1
 ORANGE = 2
 RED = 3
 
-c1, c2, c3 = st.columns((1, 0.1, 1))
-with c1:
-    size = st.slider(label="Size of the matrix", min_value=20, max_value=200, value=50, step=1)
-with c3:
-    proportion_factories = st.slider(label="Proportion of Factories", min_value=0., max_value=1., value=0.04, step=0.01)
-    proportion_cars = st.slider(label="Proportion of Cars", min_value=0., max_value=1., value=0.04, step=0.01)
-    proportion_trees = st.slider(label="Proportion of Trees", min_value=0., max_value=1., value=0.1, step=0.01)
+
+size = st.sidebar.slider(label="Size of the matrix", min_value=20, max_value=200, value=50, step=1)
+proportion_factories = st.sidebar.slider(label="Proportion of Factories", min_value=0., max_value=1., value=0.04, step=0.01)
+proportion_cars = st.sidebar.slider(label="Proportion of Cars", min_value=0., max_value=1., value=0.04, step=0.01)
+proportion_trees = st.sidebar.slider(label="Proportion of Trees", min_value=0., max_value=1., value=0.1, step=0.01)
 
 
 class Grid:
