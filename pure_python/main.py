@@ -96,22 +96,21 @@ class Grid:
         :param grille: list of lists
         :return: heatmap
         """
+        colorscale = [[0., '#2B812B'], [0.33, '#E9E439'],
+                      [0.66, 'orange'], [1., '#E52216']]
 
         if get_heatmap:
-            fig = go.Heatmap(z=self.step_CO2[step], colorscale=[[0., '#2B812B'], [0.25, '#E9E439'],
-                                                                [0.5, '#E7771A'], [1., '#E52216']])
+            fig = go.Heatmap(z=self.step_CO2[step], colorscale=colorscale)
             return fig
 
         if show_entity:
-            fig = go.Figure(data=go.Heatmap(z=self.step_CO2[step], colorscale=[[0., '#2B812B'], [0.25, '#E9E439'],
-                                                                               [0.5, '#E7771A'], [1., '#E52216']],
+            fig = go.Figure(data=go.Heatmap(z=self.step_CO2[step], colorscale=colorscale,
                                             text=self.__entity_to_str(step),
                                             texttemplate="%{text}",
                                             textfont={"size": 2}
                                             ))
         else:
-            fig = go.Figure(data=go.Heatmap(z=self.step_CO2[step], colorscale=[[0., '#2B812B'], [0.25, '#E9E439'],
-                                                                               [0.5, '#E7771A'], [1., '#E52216']],
+            fig = go.Figure(data=go.Heatmap(z=self.step_CO2[step], colorscale=colorscale,
                                             ))
 
         step_title = f"step {step + 1}/{len(self.step_CO2) - 1}" if step != -1 else f"step {len(self.step_CO2) + 1}/{len(self.step_CO2) - 1}"
@@ -122,14 +121,6 @@ class Grid:
         if display:
             plot(fig)
         return fig
-
-    def is_in_grid(self):
-        ...
-
-    def move_cars(self):
-        index_i, index_j = np.where(self.grid_entity == CAR)
-        for i, j in zip(index_i, index_j):
-            ...
 
     def neighbors_cell_change(self, i: int, j: int, new_grid):
         # crée une liste avec les voisins de la cellule en position i j (en gérant les bords)
@@ -235,7 +226,7 @@ class Grid:
                 steps.append(step)
 
             sliders = [dict(
-                active=0,
+                active=len(fig.data)-1,
                 currentvalue={"prefix": "Step: "},
                 pad={"t": len(fig.data)},
                 steps=steps

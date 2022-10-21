@@ -21,9 +21,9 @@ YELLOW = 1
 ORANGE = 2
 RED = 3
 
-
 size = st.sidebar.slider(label="Size of the matrix", min_value=20, max_value=200, value=50, step=1)
-proportion_factories = st.sidebar.slider(label="Proportion of Factories", min_value=0., max_value=1., value=0.04, step=0.01)
+proportion_factories = st.sidebar.slider(label="Proportion of Factories", min_value=0., max_value=1., value=0.04,
+                                         step=0.01)
 proportion_cars = st.sidebar.slider(label="Proportion of Cars", min_value=0., max_value=1., value=0.04, step=0.01)
 proportion_trees = st.sidebar.slider(label="Proportion of Trees", min_value=0., max_value=1., value=0.1, step=0.01)
 
@@ -134,16 +134,10 @@ class Grid:
             plot(fig)
         return fig
 
-    def is_in_grid(self):
-        ...
-
-    def move_cars(self):
-        index_i, index_j = np.where(self.grid_entity == CAR)
-        for i, j in zip(index_i, index_j):
-            ...
-
     def neighbors_cell_change(self, i: int, j: int, new_grid):
-        # crée une liste avec les voisins de la cellule en position i j (en gérant les bords)
+        """
+        crée une liste avec les voisins de la cellule en position i j (en gérant les bords)
+        """
         if i == 0:
             if j == 0:
                 neighbors = [new_grid[i, j + 1], new_grid[i + 1, j], new_grid[i + 1, j + 1]]
@@ -243,7 +237,7 @@ class Grid:
             steps.append(step)
         fig.data[0].visible = True
         sliders = [dict(
-            active=len(fig.data)-1,
+            active=len(fig.data) - 1,
             currentvalue={"prefix": "Step: "},
             pad={"t": len(fig.data)},
             steps=steps
