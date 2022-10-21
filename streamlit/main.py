@@ -253,6 +253,8 @@ class Grid:
 
         fig.update_layout(
             sliders=sliders,
+            width=800,
+            height=800,
         )
         st.plotly_chart(fig, use_container_width=True)
 
